@@ -12,4 +12,11 @@ public class daoEquipamento extends dao<Equipamento>{
         Query query =  Dados.getManager().createQuery(JPQL);
         return query.getResultList();
     }
+    
+    public List<Equipamento> readByNome(String filtro){
+        String JPQL = "select e from Equipamento e where e.nome like ?1 order by e.nome";
+        Query query = Dados.getManager().createQuery(JPQL);
+        query.setParameter(1, "%" + filtro.toUpperCase() + "%");
+        return query.getResultList();
+     }
 }

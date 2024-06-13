@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cc4283e7-9c1a-48fb-acda-31719a2f5ec3">
+	<property name="ireport.zoom" value="5.054470284992965"/>
+	<property name="ireport.x" value="2439"/>
+	<property name="ireport.y" value="354"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM tb_funcionario ORDER BY nome]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="admissao" class="java.sql.Date"/>
+	<field name="cargo" class="java.lang.String"/>
+	<field name="cpf" class="java.lang.String"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="salario" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="11" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="11" uuid="a77c0576-6d86-4075-8a84-2a11d6920ca7"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="0" width="100" height="11" uuid="a5197e73-7159-491a-93cb-125d770c8444"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="0" width="100" height="11" uuid="ca8d22e2-5ea0-403c-a543-cb4de9fdffa2"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Cargo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="0" width="100" height="11" uuid="35119aa6-d920-4e26-871a-4d703710d6d6"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="0" width="100" height="11" uuid="67702689-7f78-47c3-82ca-0c49ddebc16c"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Admissão]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="100" height="11" uuid="31088197-a406-43c6-b62a-317c4ac8b402"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Salário]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="10" width="552" height="1" uuid="449d059a-dea0-40d7-9b4b-b0f56c388009"/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="368" y="0" width="92" height="11" uuid="fb54acfd-3762-4d39-bd4a-52d07452f90d"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{admissao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="0" width="92" height="11" uuid="3b24638e-0369-41bc-814f-1932c458c9a3"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cargo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="92" height="11" uuid="8a0b6af5-4b75-48b9-9177-ceeb4e8e5adf"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="92" y="0" width="92" height="11" uuid="475dd7de-8dde-44d8-8945-b2a8649a2e64"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="0" width="92" height="11" uuid="4f2b6c6f-5fb9-4c2d-9fbb-874a8d1b1eb7"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="92" height="11" uuid="5e9bf636-5e80-4545-86b3-e45b4ca4efe8"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="10" width="552" height="1" uuid="8a860024-4314-4632-a26d-962638b5860d"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="440" y="34" width="80" height="20" uuid="0d324549-291d-4469-9206-3c2cb348b926"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="520" y="34" width="40" height="20" uuid="d9238007-2c0d-444f-910a-01c401f744b9"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

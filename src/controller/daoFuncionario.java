@@ -12,4 +12,18 @@ public class daoFuncionario extends dao<Funcionario>{
         Query query =  Dados.getManager().createQuery(JPQL);
         return query.getResultList();
     }
+    
+    public List<Funcionario> readByNome(String filtro){
+        String JPQL = "select f from Funcionario f where f.nome like ?1 order by f.nome";
+        Query query = Dados.getManager().createQuery(JPQL);
+        query.setParameter(1, "%" + filtro.toUpperCase() + "%");
+        return query.getResultList();
+     }
+    
+    public List<Funcionario> readByCpf(String filtro){
+        String JPQL="select f from Funcionario f where f.cpf = ?1";
+        Query query = Dados.getManager().createQuery(JPQL);
+        query.setParameter(1,filtro);
+        return query.getResultList();
+    }
 }

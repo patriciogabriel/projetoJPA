@@ -12,4 +12,18 @@ public class daoSuplementos extends dao<Suplementos>{
         Query query =  Dados.getManager().createQuery(JPQL);
         return query.getResultList();
     }
+    
+    public List<Suplementos> readByNome(String filtro){
+        String JPQL = "select s from Suplementos s where s.nome like ?1 order by s.nome";
+        Query query = Dados.getManager().createQuery(JPQL);
+        query.setParameter(1, "%" + filtro.toUpperCase() + "%");
+        return query.getResultList();
+    }
+    
+    public List<Suplementos> readByMarca(String filtro){
+        String JPQL = "select s from Suplementos s where s.marca like ?1 order by s.marca";
+        Query query = Dados.getManager().createQuery(JPQL);
+        query.setParameter(1, "%" + filtro.toUpperCase() + "%");
+        return query.getResultList();
+    }
 }

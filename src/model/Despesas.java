@@ -13,24 +13,29 @@ import javax.persistence.Table;
 public class Despesas implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SwingColumn(description = "Código")
     private int id;
     
     @Column(name = "nome", length = 100, nullable = false)
+    @SwingColumn(description = "Nome")
     private String nome;
     
     @Column(name = "valor", nullable = false)
-    private int valor;
+    @SwingColumn(description = "Valor")
+    private double valor;
     
     @Column(name = "data", nullable = false)
+    @SwingColumn(description = "Data")
     private LocalDate data;
     
     @Column(name = "descricao", length = 150, nullable = false)
+    @SwingColumn(description = "Descrição")
     private String descricao;
 
     public Despesas() {
         this.setId(0);
         this.setNome("SEM NOME");
-        this.setValor(0);
+        this.setValor(0.01);
         this.setData(LocalDate.now());
         this.setDescricao("SEM DESCRIÇÃO");
     }
@@ -51,8 +56,8 @@ public class Despesas implements java.io.Serializable {
         this.nome = nome.trim().isEmpty() ? "SEM NOME" : nome.toUpperCase();
     }
 
-    public void setValor(int valor) {
-        this.valor = valor < 0 ? 1 : valor;
+    public void setValor(double valor) {
+        this.valor = valor < 0 ? 0.01 : valor;
     }
 
     public void setData(LocalDate data) {
@@ -60,7 +65,7 @@ public class Despesas implements java.io.Serializable {
     }
 
     public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        this.descricao = descricao.trim().isEmpty() ? "SEM DESCRIÇÃO" : descricao.toUpperCase();
     }
 
     public int getId() {
@@ -71,7 +76,7 @@ public class Despesas implements java.io.Serializable {
         return this.nome;
     }
 
-    public int getValor() {
+    public double getValor() {
         return this.valor;
     }
 

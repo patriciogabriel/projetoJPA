@@ -15,16 +15,20 @@ import javax.persistence.Table;
 public class Plano implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SwingColumn(description = "Código")
     private int id;
     
     @Column(name = "nome", length = 100, nullable = false)
+    @SwingColumn(description = "Nome")
     private String nome;
     
     @Column(name = "valor", nullable = false)
-    private int valor;
+    @SwingColumn(description = "Valor")
+    private double valor;
     
     @Enumerated(EnumType.STRING)
     @Column(name = "assinatura", nullable = false)
+    @SwingColumn(description = "Assinatura")
     private Assinatura assinatura;
 
     public Plano() {
@@ -34,7 +38,7 @@ public class Plano implements java.io.Serializable {
         this.setAssinatura(Assinatura.A);
     }
 
-    public Plano(int id, String nome, int valor, Assinatura assinatura) {
+    public Plano(int id, String nome, double valor, Assinatura assinatura) {
         this.setId(id);
         this.setNome(nome);
         this.setValor(valor);
@@ -49,8 +53,8 @@ public class Plano implements java.io.Serializable {
         this.nome = nome.trim().isEmpty() ? "SEM NOME" : nome.toUpperCase();
     }
 
-    public void setValor(int valor) {
-        this.valor = valor < 0 ? 1 : valor;
+    public void setValor(double valor) {
+        this.valor = valor < 0 ? 0.01 : valor;
     }
 
     public void setAssinatura(Assinatura assinatura) {
@@ -65,7 +69,7 @@ public class Plano implements java.io.Serializable {
         return this.nome;
     }
 
-    public int getValor() {
+    public double getValor() {
         return this.valor;
     }
 

@@ -12,29 +12,33 @@ import javax.persistence.Table;
 public class Suplementos implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SwingColumn(description = "Código")
     private int id;
     
     @Column(name = "nome", length = 100, nullable = false)
+    @SwingColumn(description = "Nome")
     private String nome;
     
     @Column(name = "valor", nullable = false)
+    @SwingColumn(description = "Valor")
     private double valor;
     
-    @Column(name = "cliente", nullable = false)
-    private boolean cliente;
+    @Column(name = "marca", nullable = false)
+    @SwingColumn(description = "Marca")
+    private String marca;
 
     public Suplementos() {
         this.setId(0);
         this.setNome("SEM NOME");
         this.setValor(0.01);
-        this.setCliente(false);
+        this.setMarca("SEM MARCA");
     }
 
-    public Suplementos(int id, String nome, double valor, boolean cliente) {
+    public Suplementos(int id, String nome, double valor, String marca) {
         this.setId(id);
         this.setNome(nome);
         this.setValor(valor);
-        this.setCliente(cliente);
+        this.setMarca(marca);
     }
 
     public void setId(int id) {
@@ -49,10 +53,10 @@ public class Suplementos implements java.io.Serializable {
         this.valor = valor < 0 ? 0.01 : valor;
     }
 
-    public void setCliente(boolean cliente) {
-        this.cliente = cliente;
+    public void setMarca(String marca) {
+        this.marca = marca.trim().isEmpty() ? "SEM MARCA" : marca.toUpperCase();
     }
-
+    
     public int getId() {
         return this.id;
     }
@@ -65,10 +69,10 @@ public class Suplementos implements java.io.Serializable {
         return this.valor;
     }
 
-    public boolean isCliente() {
-        return this.cliente;
+    public String getMarca() {
+        return marca;
     }
-
+    
     @Override
     public String toString() {
         return "ID: " + this.id + ", Nome: " + this.nome;

@@ -18,32 +18,43 @@ public class Funcionario implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
+    @SwingColumn(description = "Código")
     private int id;
     
     @Column(name = "nome", length = 100, nullable = false)
+    @SwingColumn(description = "Nome")
     private String nome;
     
+    @Column(name = "cpf", length = 15, nullable = false)
+    @SwingColumn(description = "CPF")
+    private String cpf;
+    
     @Column(name = "admissao", nullable = false)
+    @SwingColumn(description = "Admissão")
     private LocalDate admissao;
     
     @Column(name = "salario", nullable = false)
+    @SwingColumn(description = "Salário")
     private int salario;
     
     @Enumerated(EnumType.STRING)
     @Column(name = "cargo", nullable = false)
+    @SwingColumn(description = "Cargo")
     private Cargo cargo;
 
     public Funcionario() {
         this.setId(0);
         this.setNome("SEM NOME");
+        this.setCpf("000.000.000-00");
         this.setAdmissao(LocalDate.now());
         this.setSalario(0);
         this.setCargo(Cargo.A);
     }
 
-    public Funcionario(int id, String nome, LocalDate admissao, int salario, Cargo cargo) {
+    public Funcionario(int id, String nome, String cpf, LocalDate admissao, int salario, Cargo cargo) {
         this.setId(id);
         this.setNome(nome);
+        this.setCpf(cpf);
         this.setAdmissao(admissao);
         this.setSalario(salario);
         this.setCargo(cargo);
@@ -55,6 +66,10 @@ public class Funcionario implements java.io.Serializable {
 
     public void setNome(String nome) {
         this.nome = nome.trim().isEmpty() ? "SEM NOME" : nome.toUpperCase();
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf.trim().isEmpty() ? "000.000.000-00" : cpf;
     }
 
     public void setAdmissao(LocalDate admissao) {
@@ -76,7 +91,11 @@ public class Funcionario implements java.io.Serializable {
     public String getNome() {
         return this.nome;
     }
-
+    
+    public String getCpf() {
+        return this.cpf;
+    }
+    
     public LocalDate getAdmissao() {
         return this.admissao;
     }

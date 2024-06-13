@@ -14,15 +14,19 @@ import javax.persistence.Table;
 public class Equipamento implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SwingColumn(description = "Código")
     private int id;
     
     @Column(name = "nome", length = 100, nullable = false)
+    @SwingColumn(description = "Nome")
     private String nome;
     
     @Column(name = "compra", nullable = false)
+    @SwingColumn(description = "Data de Compra")
     private LocalDate compra;
     
     @Column(name = "valor", nullable = false)
+    @SwingColumn(description = "valor")
     private double valor;
 
     public Equipamento() {
