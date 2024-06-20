@@ -76,5 +76,27 @@ public class Suplementos implements java.io.Serializable {
     @Override
     public String toString() {
         return "ID: " + this.id + ", Nome: " + this.nome;
-    }  
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Suplementos other = (Suplementos) obj;
+        return this.id == other.id;
+    }
 }

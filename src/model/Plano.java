@@ -80,5 +80,27 @@ public class Plano implements java.io.Serializable {
     @Override
     public String toString() {
         return "Plano: " + this.nome + ", Valor: " + this.valor;
-    }   
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Plano other = (Plano) obj;
+        return this.id == other.id;
+    } 
 }

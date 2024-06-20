@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,7 +33,7 @@ public class Cliente implements java.io.Serializable {
     @SwingColumn(description = "Nascimento")
     private LocalDate nascimento;
     
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     @JoinColumn(name = "id_plano", nullable = false, referencedColumnName = "id")
     @SwingColumn(description = "Plano")
     private Plano plano;
@@ -98,4 +98,26 @@ public class Cliente implements java.io.Serializable {
     public String toString() {
         return "Nome:" + this.nome + ", CPF: " + this.cpf;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        return this.id == other.id;
+    }   
 }
